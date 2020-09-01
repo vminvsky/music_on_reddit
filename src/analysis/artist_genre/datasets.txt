@@ -1,0 +1,5 @@
+genre_names
+reddit_sub_com
+artist_cosine_similarity
+genre_cosine_similarity
+artist_counts
