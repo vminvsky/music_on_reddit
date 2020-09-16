@@ -8,7 +8,7 @@ def get_youtube_links(values,start,end):
         try:
             print("We're on track {}".format(i))
             if i % 300==50:
-                df.to_csv('TracksWithYouTubeLink2{}_{}.csv'.format(start,end))
+                pd.DataFrame(values).to_csv('TracksWithYouTubeLink2{}_{}.csv'.format(start,end))
             artist = values[i]['artist'].replace(' ','+')
             title = values[i]['track'].replace(' ', '+')
             r = requests.get('http://www.last.fm/music/{}/_/{}'.format(artist, title)).text
@@ -18,6 +18,4 @@ def get_youtube_links(values,start,end):
         except:
             print('cound not find this youtube link')
     return values
-
-
 

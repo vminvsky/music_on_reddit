@@ -18,6 +18,7 @@ artist_counts = artist_counts.reset_index()
 artist_counts.columns = ['artist','count']
 artist_counts.to_csv("data\\artist_counts.csv")
 
+
 def create_genres(df, n_clusters=50,with_ppmi=False):
     """df should be subreddit artist and ppmi. Columns should be ['subreddit','artist','ppmi'] """
 
@@ -63,6 +64,7 @@ def create_genres(df, n_clusters=50,with_ppmi=False):
 
 custom, ac = create_genres(df, 50, with_ppmi=False)
 custom=custom.reset_index()
+custom.to_csv("data\\Artist_Vectors.csv")
 
 
 custom[['artist','label']].to_csv("datasets\\Artist_Genre.csv")
@@ -79,6 +81,3 @@ dump(ac, 'datasets\\agglogomerative.joblib')
 data4=pd.merge(df,custom[['artist','label']], on = 'artist')
 data4 = data4[['score','link_id','author','subreddit','created_utc','id','parent_id','track_id','artist','track_name','link','youtube_id','class','url','album_id','label']]
 data4.to_csv("datasets\\Reddit_Sub_Com_genre.csv")
-
-
-

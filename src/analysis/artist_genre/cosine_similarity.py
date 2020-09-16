@@ -9,10 +9,11 @@ data=pd.merge(metadata,vectors,left_index=True,right_index=True)
 
 
 
-df=pd.read_csv(r"data\Reddit_Sub_Com_genre.csv")
+df=pd.read_csv(r"data\Reddit_Sub_Com_f.csv")
 gens = pd.read_csv(r"data\genre_names.csv")
 df = pd.merge(df, gens[['label','genre']], on='label')
 df=df[['artist','genre','subreddit','label']]
+
 
 def cosine_similarity(category):
     merged=pd.merge(df,data,left_on='subreddit',right_on='community')
